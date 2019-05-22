@@ -1,0 +1,91 @@
+#Decision 1
+while not game.over:
+    game.processInput()
+    bk2.draw()
+    #Stats
+    game.drawText("Age: "+str(Age),1000,10,Font1)
+    game.drawText("Health: "+str(Health),400,200,Font1)
+    game.drawText("Quality of Life: "+str(Quality),400,300,Font1)
+    game.drawText("Financial Status: "+str(Financial),400,400,Font1)
+    game.drawText("Education: "+str(Education),400,500,Font1)
+    game.drawText("Job: "+str(Job),400,600,Font1)
+    #Stats Change
+    #Health
+    if health<30:
+        Health=("Very Damaging")
+    if health<40 and health>30:
+        Health=("Damaging")
+    if health<70 and health>40:
+        Health=("Stable")
+    if health<100 and health>70:
+        Health=("Very Stable")
+    #Quality of Life
+    if quality<30:
+        Quality=("Very Unpleasing")
+    if quality<40 and quality>30:
+        Quality=("Bad")
+    if quality<70 and quality>40:
+        Quality=("Good")
+    if quality<100 and quality>70:
+        Quality=("Pleasing")
+    #Finantial Status
+    if financial<30:
+        Financial=("Bad")
+    if financial<40 and financial>30:
+        Financial=("OK")
+    if financial<70 and financial>40:
+        Financial=("Good")
+    if financial<100 and financial>70:
+        Financial=("Pleasing")
+    #Education
+    if education>0 and education<2:
+        Education=("5th grade")
+    if education>2 and education<4:
+        Education=("6th grade")
+    if education>4 and education<6:
+        Education=("7th grade")
+    if education>6 and education<8:
+        Education=("8th grade")
+    if education>8 and education<10:
+        Education=("9th grade")
+    if education>10 and education<12:
+        Education=("10th grade")
+    if education>12 and education<14:
+        Education=("11th grade")
+    if education>14 and education<16:
+        Education=("12th grade")
+    if education>16 and education<18:
+        Education=("College Student")
+    #Job
+    if job<1:
+        Job=("None")
+    if job<30 and job>1:
+        Job=("Terrible")
+    if job>30 and job<40:
+        Job=("OK")
+    if job<70 and job>40:
+        Job=("Good")
+    if job<100 and job>70:
+        Job=("Pleasing and Stable")
+    #Doors
+    for index in range(1):
+        #Choice 1 Door
+        doors_l[index].draw()
+        if mouse.LeftClick and doors_l[index].collidedWith(mouse):
+            #Outcome Choice 1
+            health-=1
+            game.over=True
+    for index in range(1):
+        #Choice 2 Door
+        doors_r[index].draw()
+        if mouse.LeftClick and doors_r[index].collidedWith(mouse):
+            #Outcome Choice 2
+            health+=1
+            game.over=True
+    #Decision
+    game.drawText("Breakfast Time",350,30,Font2)
+    #Choices
+    game.drawText("Pancakes and Bacon",50,80,Font3)
+    game.drawText("Bowl of Fruit",930,80,Font3)
+    game.update(30)
+game.over=False
